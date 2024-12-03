@@ -26,6 +26,9 @@ fileList.forEach(async (fileName) => {
     require(root + '/helpers/' + fileName);
 });
 
+const userController = loadModule('users', 'controller');
+App.express.use(userController.loginUserCheck);
+
 const router = require('express').Router();
 
 let dirList = fs.readdirSync(modulePath)

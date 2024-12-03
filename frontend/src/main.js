@@ -5,7 +5,16 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-import '@/plugins/formatter'
+import mixins from "@/mixins";
+Vue.mixin(mixins);
+
+import '@/plugins/axios'
+
+import userModel from "@/models/userModel";
+if (userModel.isLogin()) {
+  store.commit('authorize/setLogin', true);
+  userModel.requestMyInfo();
+}
 
 new Vue({
   router,

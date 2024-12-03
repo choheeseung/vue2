@@ -3,12 +3,22 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import AuthorizeRoutes from './authorize.routes';
+import MyPageRoutes from './my.routes';
+import BoardRoutes from './board.routes';
+import AgreementRoutes from './agreement.routes';
+
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
   },
+    ...AuthorizeRoutes,
+    ...MyPageRoutes,
+    ...BoardRoutes,
+    ...AgreementRoutes,
   {
     path: '*',
     name: 'Error404',
